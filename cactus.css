@@ -1,0 +1,262 @@
+ /* #fcf1f1 -background
+ #f9e0ae - circle
+ #835050 - pot 
+ #799351 - cactus
+ #335d2d - cactus lines */
+
+ /* get rid of default settings  */
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ .canvas {
+   /* she says really practice relative vs absolute positioning  */
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #fcf1f1;
+   width: 100%;
+   height: 100vh;
+  }
+
+  .circle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    /* she says she uses vmin for responsiveness  */
+    width: 80vmin;
+    height: 80vmin;
+    /* to make a circe  */
+    border-radius: 50%;
+    background-color: #f9e0ae;
+  }
+
+  /* she says she starts with the pot because we 
+  need to think about what will be in front of 
+  each other. We will do the pot first and then
+  work our way up because the pot will essentially
+  be the center of this image */
+  .pot {
+    position: absolute;
+    border-bottom: 25vmin solid #835050;
+    border-left: 7vmin solid transparent;
+    border-right: 7vmin solid transparent;
+    height: 0;
+    width: 40vmin;
+    border-radius: 3vmin;
+    /* positioning the pot  */
+    bottom: 15vmin;
+    transform: rotate(180deg);
+  }
+
+  /* she says pseudo-elements before and after are 
+  very important to css art and you should get to 
+  know them */
+  .pot::after {
+    /* she says she always puts content "" afterwards  */
+    content: "";
+    position: absolute;
+    width: 26vmin;
+    height: 1vmin;
+    background-color: black;
+  }
+
+  .eyes {
+    position: absolute;
+    width: 4vmin;
+    height: 4vmin;
+    background-color: black;
+    border-radius: 50%;
+    bottom: -15vmin;
+    right: 18vmin;
+    /* box-shadow is used when you have identical items. 
+    above we created and positioned the right eye.
+    for box-shadow, the first value will be the x axis
+    the second value will be the y-axis and the third
+    one would be the blur value which we don't need here
+    the last one will be the color  */
+    box-shadow: 13vmin 0 #000;
+    /* the first animation argument is the name, 
+    the second is duration, third we put infinite
+    so it just keeps running */
+    animation: blink 2s infinite;
+  }
+
+  @keyframes blink {
+    /* We want to make sure the width stays the same 
+    but the height will shrink so we use scale */
+    /* the first argument for scale is x which we keep the 
+    same and the second one is height which we will make 0.1 */
+    0% {transform: scale(1, 0.1);}
+    /* then we go back to normal which is x = 1 and height = 1  */
+    100% {transform: scale(1, 1);}
+  }
+
+  .cheeks {
+    position: absolute;
+    width: 5vmin;
+    height: 2.5vmin;
+    top: 9vmin;
+    left: 2vmin;
+    background-color: red;
+    border-radius: 50%;
+    opacity: 20%;
+    box-shadow: 16vmin 0 red;
+  }
+
+  .mouth {
+    position: absolute;
+    width: 4vmin;
+    height: 4vmin;
+    top: 8vmin;
+    left: 10vmin;
+    border-radius: 50%;
+    background-color: transparent;
+    border-top: 1vmin solid black;
+  }
+
+  .cactus {
+    position: absolute;
+    width: 17vmin;
+    height: 30vmin;
+    top: 15vmin;
+    left: 25vmin;
+    background: #799351;
+    border-radius: 45%;
+    border: 1vmin solid black;
+  }
+
+  .cactus::before {
+    content: "";
+    position: absolute;
+    width: 5vmin;
+    height: 30vmin;
+    background-color: transparent;
+    /* background: #335d2d; */
+    border-radius: 50%;
+    border-right: 1vmin solid #335d2d;
+    left: 6vmin;
+  }
+
+  .cactus::after {
+    content: "";
+    position: absolute;
+    width: 5vmin;
+    height: 30vmin;
+    right: 6vmin;
+    background-color: transparent;
+    border-radius: 50%;
+    border-left: 1vmin solid #335d2d;
+  }
+
+  .cactusSmall {
+    position: absolute;
+    width: 17vmin;
+    height: 20vmin;
+    top: 25vmin;
+    right: 28vmin;
+    background-color: #799351;
+    border-radius: 45%;
+    border: 1vmin solid black;
+  }
+
+  .cactusSmall::before {
+    content: "";
+    position: absolute;
+    width: 5vmin;
+    height: 20vmin;
+    background-color: transparent;
+    /* background: #335d2d; */
+    border-radius: 50%;
+    border-right: 1vmin solid #335d2d;
+    left: 6vmin;
+  }
+
+  .cactusSmall::after {
+    content: "";
+    position: absolute;
+    width: 5vmin;
+    height: 20vmin;
+    right: 6vmin;
+    background-color: transparent;
+    border-radius: 50%;
+    border-left: 1vmin solid #335d2d;
+  }
+
+  .pricks {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 1vmin solid transparent;
+    border-right: 1vmin solid transparent;
+    border-bottom: 7vmin solid #335d2d;
+    transform: rotate(-45deg);
+  }
+  
+  .pricks::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 5vmin;
+    left: 9vmin;
+    border-left: 1vmin solid transparent;
+    border-right: 1vmin solid transparent;
+    border-bottom: 7vmin solid #335d2d;
+    transform: rotate(90deg);
+  }
+  
+  .pricks::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 7vmin;
+    left: -10vmin;
+    border-left: 1vmin solid transparent;
+    border-right: 1vmin solid transparent;
+    border-bottom: 7vmin solid #335d2d;
+  }
+  
+  .pricksRight {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -2vmin;
+    left: -1vmin;
+    border-left: 1vmin solid transparent;
+    border-right: 1vmin solid transparent;
+    border-bottom: 7vmin solid #335d2d;
+    transform: rotate(-45deg);
+  }
+  
+  .pricksRight::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 10vmin;
+    left: 9vmin;
+    border-left: 1vmin solid transparent;
+    border-right: 1vmin solid transparent;
+    border-bottom: 7vmin solid #335d2d;
+    transform: rotate(90deg);
+  }
+  
+  .pricksRight::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 4vmin;
+    left: 7vmin;
+    border-left: 1vmin solid transparent;
+    border-right: 1vmin solid transparent;
+    border-bottom: 7vmin solid #335d2d;
+    transform: rotate(60deg);
+  }
+
